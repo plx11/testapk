@@ -17,7 +17,14 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK packages
+        run: |
+          sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
 
       - name: Cache Gradle
         uses: gradle/actions/setup-gradle@v4
@@ -26,7 +33,10 @@ jobs:
         run: chmod +x gradlew
 
       - name: Lint
-        run: ./gradlew lint
+        run: ./gradlew lint --stacktrace
 
       - name: Unit tests
-        run: ./gradlew test
+        run: ./gradlew test --stacktrace
+
+      - name: Assemble debug APK
+        run: ./gradlew assembleDebug --stacktrace

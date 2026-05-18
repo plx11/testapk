@@ -8,7 +8,7 @@ This repository now includes:
 - A `HomeViewModel` with UI state (`StateFlow`)
 - A primary action button that updates state
 - Basic unit + UI test examples
-- A GitHub Actions CI workflow
+- A GitHub Actions CI workflow (lint, test, assembleDebug)
 
 ## Tech Stack
 - Android Gradle Plugin 8.5.2
@@ -44,6 +44,7 @@ chmod +x gradlew
 ```bash
 ./gradlew lint
 ./gradlew test
+./gradlew assembleDebug
 ./gradlew connectedAndroidTest
 ```
 
