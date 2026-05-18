@@ -52,3 +52,17 @@ chmod +x gradlew
 2. Add navigation + multiple screens
 3. Introduce repository/data source layer
 4. Add release signing + minify rules for production
+
+## Codespaces Auto-Setup (Android SDK)
+To avoid reinstalling SDK every time in a new Codespace, this repo now includes a Dev Container setup.
+
+When a new Codespace is created, `.devcontainer/postCreate.sh` will:
+- install Android command-line tools under `$HOME/android-sdk`
+- accept SDK licenses
+- install `platform-tools`, `platforms;android-35`, and `build-tools;35.0.0`
+- generate/update `local.properties` with `sdk.dir=$HOME/android-sdk`
+
+After Codespace creation, you can run:
+```bash
+./gradlew assembleDebug
+```
